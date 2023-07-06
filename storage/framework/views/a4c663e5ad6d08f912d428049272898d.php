@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <h3 class="card-header text-center">Login</h3>
+                    <?php if(\Session::has('message')): ?>
+                        <div class="alert alert-info">
+                            Login details are not valid!
+                        </div>
+                    <?php endif; ?>
+                    <div class="card-body">
+                        <form method="POST" action="<?php echo e(route('postlogin')); ?>">
+                            <?php echo csrf_field(); ?>
+                            <div class="form-group mb-3">
+                                <input type="text" placeholder="Email" id="email" class="form-control" name="email"
+                                    autofocus>
+                                <?php if($errors->has('email')): ?>
+                                <span class="text-danger">The email field is required.</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="password" placeholder="Password" id="password" class="form-control" name="password">
+                                <?php if($errors->has('password')): ?>
+                                <span class="text-danger">The password field is required.</span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-grid mx-auto">
+                                <button type="submit" class="btn btn-dark btn-block">Login</button>
+                                <a href="register">New User?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
+<?php /**PATH C:\xampp\htdocs\loginswati\resources\views/login.blade.php ENDPATH**/ ?>
